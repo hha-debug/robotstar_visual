@@ -166,7 +166,7 @@ def main():
     
     print(f"找到 {len(image_paths)} 张图片")
     print(f"图片文件示例: {image_paths[:3]}...")  # 显示前3个图片路径作为示例
-    7
+    
     print(f"\n开始性能测试 (测试图片数: {len(image_paths)})...")
     print("="*60)  # 分隔线
     
