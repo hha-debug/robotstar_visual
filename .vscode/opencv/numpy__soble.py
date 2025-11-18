@@ -171,9 +171,6 @@ def main():
     # 显示边缘检测结果
     show_image(edges, 'Sobel边缘检测结果')
     
-    '''# 显示梯度信息
-    show_image(normalize_image(grad_x), 'X方向梯度', cmap='seismic')
-    show_image(normalize_image(grad_y), 'Y方向梯度', cmap='seismic')'''
     
     # 打印统计信息
     print(f"原始图像范围: [{original_image.min()}, {original_image.max()}]")
