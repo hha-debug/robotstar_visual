@@ -145,7 +145,7 @@ def sobel_edge_detection(image):
 def main():
     """主函数"""
     # 尝试读取图像，如果不存在则创建测试图像
-    image_path =r"D:\robotstar__visual\视觉二轮附件\二轮图片资料\1-5.png"  # 替换为你的图像路径
+    image_path =r"D:\robotstar__visual\2\2\1-5.png"
     
     try:
         # 尝试读取图像
