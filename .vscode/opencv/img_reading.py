@@ -148,7 +148,7 @@ def main():
     print("=== 图片读取性能测试程序 ===\n")
     
     # 查找图片文件
-    data_folder =r"D:\robotstar__visual\视觉二轮附件\二轮图片资料\data"
+    data_folder =r"D:\robotstar__visual\2\2\data"
     print(f"正在搜索图片文件: {data_folder}")
     
     image_paths = find_image_files(data_folder)
