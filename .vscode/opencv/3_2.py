@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-plt.rcParams['font.sans-serif'] = ['SimHei']  # 使用黑体
-plt.rcParams['axes.unicode_minus'] = False   # 解决负号显示问题
+plt.rcParams['font.sans-serif'] = ['SimHei']  
+plt.rcParams['axes.unicode_minus'] = False   
 
 # 读取图像
 image = cv2.imread(r"D:\robotstar__visual\2\2\3-1-2.jpg")
@@ -19,7 +19,7 @@ kernel = np.ones((3,3),np.uint8)
 dige_dilate = cv2.dilate(eroded,kernel,iterations = 20)
 cv2.imshow("dige_dilate",dige_dilate)
 # 边缘检测（Canny）
-edges = cv2.Canny(dige_dilate, 50, 150)  # 可根据效果微调阈值
+edges = cv2.Canny(dige_dilate, 50, 150)  
 cv2.imshow("edges",edges)
 # 检测轮廓
 contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
