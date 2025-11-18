@@ -103,14 +103,7 @@ def multi_process_calculation(n, num_processes=4):
     # 将任务分割成多个块，便于分配给不同进程
     chunk_size = n // num_processes  # 计算每个进程处理的数据块大小
     chunks = []  # 存储每个进程的数据范围
-    
-    for i in range(num_processes):
-        start = i * chunk_size + 1  # 当前进程起始位置
-        if i == num_processes - 1:  # 最后一个进程处理剩余部分
-            end = n
-        else:
-            end = (i + 1) * chunk_size  # 当前进程结束位置
-        chunks.append((start, end))
+    chunks = [(i * chunk_size + 1, (i + 1) * chunk_size if i != num_processes - 1 else n) for i in range(num_processes)]
     
     # 使用进程池执行任务
     with ProcessPoolExecutor(max_workers=num_processes) as executor:
@@ -124,31 +117,7 @@ def multi_process_calculation(n, num_processes=4):
     
     end_time = time.time()
     return total_result, end_time - start_time
-'''
-def verify_calculation(n, result):
-    """
-    验证计算结果（使用小范围验证）
-    
-    Args:
-        n: 原始计算范围
-        result: 需要验证的结果
-    """
-    print("验证计算结果...")
-    test_n = min(1000, n)  # 只验证前1000个数字，提高验证效率
-    
-    # 计算期望结果
-    expected = sum(math.sqrt(i) + i * i for i in range(1, test_n + 1))
-    
-    # 计算实际结果中对应的部分（这里重新计算验证部分）
-    actual_chunk = 0
-    for i in range(1, test_n + 1):
-        actual_chunk += math.sqrt(i) + i * i
-    
-    print(f"验证范围: 1 到 {test_n}")
-    print(f"期望结果: {expected:.2f}")
-    print(f"实际结果: {actual_chunk:.2f}")
-    print(f"验证通过: {abs(expected - actual_chunk) < 1e-6}")  # 使用容差值比较浮点数
-'''
+
 def format_number(num):
     """
     格式化大数字显示，便于阅读
