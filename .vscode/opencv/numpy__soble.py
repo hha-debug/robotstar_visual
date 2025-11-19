@@ -96,13 +96,9 @@ def convolve2d(image, kernel):
     output = np.zeros((output_height, output_width))
     
     # 滑动窗口卷积
-    for i in range(output_height):
-        for j in range(output_width):
-            # 提取当前窗口
-            window = image[i:i+kernel_height, j:j+kernel_width]
-            # 计算卷积结果
-            output[i, j] = np.sum(window * kernel)
-    
+    output = np.array([[np.sum(image[i:i+kernel_height, j:j+kernel_width] * kernel) 
+                    for j in range(output_width)] 
+                   for i in range(output_height)])
     return output
 
 def normalize_image(image):
